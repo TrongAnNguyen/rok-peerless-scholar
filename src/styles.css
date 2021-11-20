@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid red;
+}
+
+table tr:not(:nth-child(1)) {
+  text-align: left;
+}
+
+table tr:nth-child(2n) {
+  background-color: rgb(207, 211, 197);
+}
