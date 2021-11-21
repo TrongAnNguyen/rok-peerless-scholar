@@ -1,26 +1,17 @@
 import "./styles.css";
-import data from "./PeerlessSchoolarData.json";
-import Fuse from 'fuse.js'
-import { useState } from "react";
+import useFlexSearch from "./hooks/useFlexSearch";
 
-const fuse = new Fuse(data, {
-  keys: ["q", "a"]
-})
 
 export default function App() {
-  const [searchText, setSearchText] = useState("");
-  const result = fuse.search(searchText)
-  console.log(result)
-  const onSearch = (event) => {
-    const { value } = event.target;
-    setSearchText(value);
-  };
+  const { onSearch, result } = useFlexSearch({
+    limit: 40
+  });
 
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
       <div>
-        <input type="text" value={searchText} onChange={onSearch} />
+        <input type="text" onChange={onSearch} />
       </div>
 
       <table>
@@ -28,18 +19,15 @@ export default function App() {
           <th>Question</th>
           <th>Answer</th>
         </tr>
-        <tr>
-          <td>sfdsdf</td>
-          <td>sdfsdf</td>
-        </tr>
-        <tr>
-          <td>sfdsdf</td>
-          <td>sdfsdf</td>
-        </tr>
-        <tr>
-          <td>sfdsdf</td>
-          <td>sdfsdf</td>
-        </tr>
+        {result.map((item) => (
+          <tr key={item.id}>
+            <td>
+              {/* <FuseHighLight result={item} attribute="q" /> */}
+              {item.doc.q}
+            </td>
+            <td>{item.doc.a}</td>
+          </tr>
+        ))}
       </table>
     </div>
   );
