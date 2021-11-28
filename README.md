@@ -1,2 +1,2 @@
-# rok-peerless-schoolar
+# rok-peerless-scholar
 Created with CodeSandbox
