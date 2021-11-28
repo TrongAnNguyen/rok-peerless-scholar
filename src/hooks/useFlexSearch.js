@@ -1,7 +1,7 @@
 import { Document } from "flexsearch";
 import { useCallback, useMemo, useState } from "react";
 import { debounce } from "throttle-debounce";
-import peerlessSchoolarData from "../PeerlessSchoolarData.json";
+import peerlessSchoolarData from "../PeerlessScholarData.json";
 
 const useFlexSearch = (options = {}) => {
   const [query, updateQuery] = useState("");
