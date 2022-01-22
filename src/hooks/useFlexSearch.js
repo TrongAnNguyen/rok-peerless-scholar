@@ -1,7 +1,7 @@
 import { Document } from "flexsearch";
 import { useCallback, useMemo, useState } from "react";
 import { debounce } from "throttle-debounce";
-import peerlessSchoolarData from "../PeerlessScholarData.json";
+import peerlessSchoolarData from "../database.json";
 
 const useFlexSearch = (options = {}) => {
   const [query, updateQuery] = useState("");
@@ -17,8 +17,8 @@ const useFlexSearch = (options = {}) => {
       document: {
         id: "id",
         index: ["q"],
-        store: ["q", "a"]
-      }
+        store: ["q", "a"],
+      },
     });
     peerlessSchoolarData.forEach((item) => index.add(item));
 
@@ -37,7 +37,7 @@ const useFlexSearch = (options = {}) => {
     result,
     query,
     setQuery,
-    onSearch
+    onSearch,
   };
 };
 

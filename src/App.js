@@ -1,15 +1,14 @@
 import "./styles.css";
 import useFlexSearch from "./hooks/useFlexSearch";
 
-
 export default function App() {
   const { onSearch, result } = useFlexSearch({
-    limit: 40
+    limit: 40,
   });
 
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
+      <h1>ROK Peerless Scholar</h1>
       <div>
         <input type="text" onChange={onSearch} />
       </div>
