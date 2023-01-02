@@ -1,17 +1,20 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 table {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
 }
 
 table,
 th,
 td {
-  border: 1px solid red;
+  padding: 4px;
 }
 
 table tr:not(:nth-child(1)) {
@@ -20,4 +23,17 @@ table tr:not(:nth-child(1)) {
 
 table tr:nth-child(2n) {
   background-color: rgb(207, 211, 197);
+}
+
+table tr:nth-child(2n):hover {
+  background-color: #fafafa;
+}
+
+.table_container {
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.search_container {
+  width: 50%;
 }

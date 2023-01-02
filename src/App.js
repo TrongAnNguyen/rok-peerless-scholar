@@ -1,3 +1,4 @@
+import { Input, Table } from "antd";
 import "./styles.css";
 import useFlexSearch from "./hooks/useFlexSearch";
 
@@ -6,28 +7,39 @@ export default function App() {
     limit: 40,
   });
 
+  const dataSource = result.map((item) => ({
+    key: item.id,
+    q: item.doc.q,
+    a: item.doc.a,
+  }));
+
+  const tableColumn = [
+    {
+      title: "Question",
+      dataIndex: "q",
+      width: "70%",
+    },
+    {
+      title: "Answer",
+      dataIndex: "a",
+    },
+  ];
+
   return (
     <div className="App">
       <h1>ROK Peerless Scholar</h1>
-      <div>
-        <input type="text" onChange={onSearch} />
+      <div className="search_container">
+        <Input
+          placeholder="Search anything..."
+          allowClear
+          onChange={onSearch}
+        />
       </div>
-
-      <table>
-        <tr>
-          <th>Question</th>
-          <th>Answer</th>
-        </tr>
-        {result.map((item) => (
-          <tr key={item.id}>
-            <td>
-              {/* <FuseHighLight result={item} attribute="q" /> */}
-              {item.doc.q}
-            </td>
-            <td>{item.doc.a}</td>
-          </tr>
-        ))}
-      </table>
+      <Table
+        className="table_container"
+        columns={tableColumn}
+        dataSource={dataSource}
+      />
     </div>
   );
 }
